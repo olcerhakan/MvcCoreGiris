@@ -5,6 +5,13 @@
 
 <h1>@ViewBag.Title</h1>
 
+@if (TempData["mesaj"] !=null)
+	{
+		 <mesaj kapat-goster="true">
+             @TempData["mesaj"]
+         </mesaj>
+	}
+
 @* html tag ı giremezsin
     @Html.ActionLink("Yeni Kişi","Yeni",null,htmlAttributes: new { @class="btn btn-success" })  *@
 
