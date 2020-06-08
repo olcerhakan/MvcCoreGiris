@@ -82,6 +82,7 @@ namespace MvcCoreGiris.Controllers
             }
             var kisi = db.Kisiler.Find(id);
 
+
             if (kisi == null)
             {
                 return NotFound();
