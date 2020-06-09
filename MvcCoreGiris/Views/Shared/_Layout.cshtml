@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - MvcCoreGiris</title>
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -18,18 +19,31 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav">
+                      <li>
+                          @* tag helper belirtmek zorundayız *@
+                          <vc:sansli-kisi renk="warning"></vc:sansli-kisi>
+                          @await Component.InvokeAsync("SansliKisi", new { renk =MvcCoreGiris.Components.TextColor.primary })
+                      </li>
+                    </ul>
+
+
+                    <ul class="navbar-nav flex-grow-1 ">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HavaDurumu" asp-action="Index">Hava Durumu</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Kisiler" asp-action="Index">Kişiler</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+
+
                 </div>
             </div>
         </nav>
@@ -47,6 +61,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/lodash.js/lodash.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

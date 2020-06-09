@@ -9,7 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MvcCoreGiris.Interfaces;
 using MvcCoreGiris.Models;
+using MvcCoreGiris.Services;
 
 namespace MvcCoreGiris
 {
@@ -29,6 +31,9 @@ namespace MvcCoreGiris
 
             //https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio
             services.AddDbContext<OkulContext>(options=> options.UseSqlServer(Configuration.GetConnectionString("OkulContext")));
+
+            //her istek için 1 kere new leyerek instance oluþturucak
+            services.AddScoped<IWeatherService, OpenWeatherMapService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
